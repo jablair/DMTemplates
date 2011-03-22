@@ -3,7 +3,23 @@
 // by Dustin Mierau
 // Cared for under the MIT license.
 
-@interface DMTemplateEngine : NSObject
+@class DMTemplateCondition;
+
+@interface DMTemplateEngine : NSObject {
+@private
+	NSString *template;
+	NSString *beginProcessorMarker;
+	NSString *endProcessorMarker;
+	
+	id object;
+	NSMutableArray *conditionStack;
+	NSMutableDictionary *modifiers;
+	NSScanner *scanner;
+	NSMutableString *renderedTemplate;
+	DMTemplateCondition *currentCondition;
+	BOOL hasCondition;
+	BOOL overallCondition;
+}
 
 @property (nonatomic, retain) NSString* template;
 @property (nonatomic, retain) NSString* beginProcessorMarker; // Default: <?

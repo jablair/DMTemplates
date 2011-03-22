@@ -25,7 +25,11 @@ DMTemplateBlockType;
 
 #pragma mark -
 
-@interface DMTemplateCondition : NSObject
+@interface DMTemplateCondition : NSObject {
+@private
+	BOOL isSolved;
+	BOOL result;
+}
 @property (nonatomic, readonly) BOOL isSolved;
 @property (nonatomic, assign) BOOL result;
 + (id)condition;
@@ -33,7 +37,12 @@ DMTemplateBlockType;
 
 #pragma mark -
 
-@interface DMTemplateTagInfo : NSObject
+@interface DMTemplateTagInfo : NSObject {
+@private
+	DMTemplateTagType type;
+	NSMutableArray *modifiers;
+	NSString *content;
+}
 @property (nonatomic, assign) DMTemplateTagType type;
 @property (nonatomic, retain) NSMutableArray* modifiers;
 @property (nonatomic, retain) NSString* content;
@@ -42,7 +51,11 @@ DMTemplateBlockType;
 
 #pragma mark -
 
-@interface DMTemplateContext : NSObject
+@interface DMTemplateContext : NSObject {
+@private
+	id object;
+	NSMutableDictionary *dictionary;
+}
 @property (nonatomic, assign) id object;
 @property (nonatomic, retain) NSMutableDictionary* dictionary;
 + (id)context;
